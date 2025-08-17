@@ -8,21 +8,23 @@
     body {
         font-family: 'Arial', sans-serif;
         text-align: center;
-        background: linear-gradient(to bottom right, #ffb6c1, #ff69b4);
-        color: white;
+        background: linear-gradient(to bottom right, #1e3c72, #2a5298);
+        color: #fff;
         margin: 0;
         padding: 0;
         overflow: hidden;
+        height: 100vh;
     }
     h1 {
-        margin-top: 50px;
+        margin-top: 80px;
         font-size: 3em;
         animation: fadeIn 2s ease-in-out;
     }
     p {
-        font-size: 1.2em;
-        max-width: 500px;
-        margin: auto;
+        font-size: 1.3em;
+        max-width: 600px;
+        margin: 20px auto;
+        line-height: 1.6em;
         animation: fadeIn 3s ease-in-out;
     }
     @keyframes fadeIn {
@@ -32,18 +34,34 @@
     .heart {
         position: absolute;
         animation: floatUp 6s infinite;
-        font-size: 24px;
-        opacity: 0.7;
+        font-size: 22px;
+        opacity: 0.6;
     }
     @keyframes floatUp {
-        0% { transform: translateY(0); opacity: 0.7; }
-        100% { transform: translateY(-800px); opacity: 0; }
+        0% { transform: translateY(0); opacity: 0.6; }
+        100% { transform: translateY(-900px); opacity: 0; }
+    }
+    /* Twinkling stars */
+    .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: twinkle 2s infinite alternate;
+    }
+    @keyframes twinkle {
+        from { opacity: 0.2; }
+        to { opacity: 1; }
     }
 </style>
 </head>
 <body>
-    <h1>Happy 3 Months, ❤️ Sunny!</h1>
-    <p>Every day with you has been a gift. Thank you for making my life brighter. Here’s to many more months together. 💕</p>
+    <h1>Happy 3 Months, ❤️ Namhom!</h1>
+    <p>
+        Long distance isn’t easy, but every day with you is worth it.  
+        Soon, we’ll be together again under the Bali skies 🌴☀️.  
+        Until then, my heart is always with you. 💕
+    </p>
 
     <script>
         // Floating hearts
@@ -56,7 +74,23 @@
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 6000);
         }
-        setInterval(createHeart, 300);
+        setInterval(createHeart, 400);
+
+        // Random twinkling stars
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 3 + 2 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(star);
+        }
+        for (let i = 0; i < 50; i++) {
+            createStar();
+        }
     </script>
 </body>
 </html>
