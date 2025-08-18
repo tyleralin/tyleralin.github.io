@@ -14,7 +14,7 @@
   }
   header {
     background: linear-gradient(to right, #ff9a9e, #fad0c4);
-    padding: 50px 20px;
+    padding: 80px 20px;
     text-align: center;
     color: #fff;
   }
@@ -24,43 +24,25 @@
   }
   header p {
     font-size: 1.2em;
-    margin-top: 10px;
+    margin-top: 15px;
   }
   nav {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 30px 0;
+    margin: 40px 0;
   }
   nav a {
     text-decoration: none;
-    padding: 12px 25px;
+    padding: 14px 30px;
     border-radius: 25px;
     background: #ff758c;
     color: white;
     transition: 0.3s;
+    font-weight: bold;
   }
   nav a:hover {
     background: #ff4e75;
-  }
-  section {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: auto;
-  }
-  section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-  }
-  .gallery img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
 </style>
 </head>
@@ -71,40 +53,10 @@
   </header>
 
   <nav>
-    <a href="#boston">Boston</a>
-    <a href="#newport">Newport</a>
-    <a href="#nyc">New York City</a>
-    <a href="#bali">Bali (coming soon ✈️)</a>
+    <a href="boston.html">Boston</a>
+    <a href="newport.html">Newport</a>
+    <a href="nyc.html">New York City</a>
+    <a href="bali.html">Bali (coming soon ✈️)</a>
   </nav>
-
-  <section id="boston">
-    <h2>Boston</h2>
-    <div class="gallery">
-      <img src="images/boston/IMG_8702.JPEG" alt="Boston trip">
-      <img src="images/boston/boston2.jpg" alt="Boston trip">
-      <!-- Add more -->
-    </div>
-  </section>
-
-  <section id="newport">
-    <h2>Newport</h2>
-    <div class="gallery">
-      <img src="images/newport/newport1.jpg" alt="Newport trip">
-      <img src="images/newport/newport2.jpg" alt="Newport trip">
-    </div>
-  </section>
-
-  <section id="nyc">
-    <h2>New York City</h2>
-    <div class="gallery">
-      <img src="images/nyc/IMG_9830.JPG" alt="NYC trip">
-      <img src="images/nyc/nyc2.jpg" alt="NYC trip">
-    </div>
-  </section>
-
-  <section id="bali">
-    <h2>Bali (coming soon ✨)</h2>
-    <p style="text-align:center;">Counting down the days until our Bali adventure 🌴☀️</p>
-  </section>
 </body>
 </html>
