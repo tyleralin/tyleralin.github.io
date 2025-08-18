@@ -1,136 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boston Memories ❤️</title>
-<style>
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #fafafa;
-    color: #262626;
-  }
-  header {
-    background: #ff758c;
-    padding: 40px 20px;
-    text-align: center;
-    color: #fff;
-  }
-  header h1 {
-    margin: 0;
-    font-size: 2.5em;
-  }
-  nav {
-    margin: 20px;
-    text-align: center;
-  }
-  nav a {
-    text-decoration: none;
-    margin: 0 10px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    background: #ff9a9e;
-    color: white;
-    transition: 0.3s;
-  }
-  nav a:hover {
-    background: #ff4e75;
-  }
-  section {
-    padding: 30px;
-    max-width: 900px;
-    margin: auto;
-  }
-  .scrapbook {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    justify-content: center;
-  }
-  .photo-card {
-    background: #fff;
-    border: 1px solid #dbdbdb;
-    border-radius: 12px;
-    width: 300px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  /* top bar like IG */
-  .photo-card .top-bar {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    font-size: 0.9em;
-    font-weight: bold;
-  }
-  .photo-card .avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #ff9a9e;
-    margin-right: 10px;
-  }
-  .photo-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 0;
-  }
-  .caption {
-    padding: 12px;
-    font-size: 0.9em;
-    color: #555;
-    border-top: 1px solid #eee;
-    line-height: 1.4em;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Scrapbook Instagram Style</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .scrapbook {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .photo-card {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .username {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .location {
+      font-size: 12px;
+      color: #555;
+      display: flex;
+      align-items: center;
+      margin-top: 2px;
+    }
+
+    .location span {
+      margin-left: 4px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Boston Adventures ❤️</h1>
-    <p>Our moments in the city where it all began</p>
-  </header>
+  <div class="scrapbook">
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="newport.html">Newport</a>
-    <a href="nyc.html">NYC</a>
-    <a href="bali.html">Bali</a>
-  </nav>
-
-  <section>
-    <div class="scrapbook">
-
-      <!-- Photo card 1 -->
-      <div class="photo-card">
-        <div class="top-bar">
-          <div class="avatar"></div>
-          <span>namhom_and_tyler · 📍 Boston Logan Airport</span>
-        </div>
-        <img src="images/boston/IMG_0486.JPG" alt="Boston Logan Airport">
-        <div class="caption">
-          <strong>tyleralin</strong> 📅 July 06, 2025 <br><br>
-          “Picked up some flowers and fruit to go pick up my baby :')”
+    <!-- Post 1 -->
+    <div class="photo-card">
+      <div class="card-header">
+        <img src="images/profile.jpg" alt="Profile" class="profile-pic">
+        <div class="profile-info">
+          <div class="username">tyl_lin</div>
+          <div class="location">📍<span>Boston Logan Airport</span></div>
         </div>
       </div>
-
-      <!-- Photo card 2 -->
-      <div class="photo-card">
-        <div class="top-bar">
-          <div class="avatar"></div>
-          <span>namhom_and_tyler · 📍 Newbury Street</span>
-        </div>
-        <img src="images/boston/IMG_0518.JPG" alt="Newbury Street">
-        <div class="caption">
-          <strong>tyleralin</strong> 📅 July 07, 2025 <br><br>
-          “Got some cute photobooth pictures”
-        </div>
+      <img src="images/boston/IMG_0486.JPG" alt="Boston Photo">
+      <div class="caption">
+        📅 July 06, 2025 <br><br>
+        “Picked up some flowers and fruit to go pick up my baby :')”
       </div>
-
     </div>
-  </section>
-</body>
-</html>
+
+    <!-- Post 2 -->
+    <div class="photo-card">
+      <div class="card-header">
+        <img src="images/profile.jpg" alt="Profile" class="profile-pic">
+        <div class="profile-info">
+          <div class="username">tyl_lin</div>
+          <div class="location">📍<span>Newbury St
