@@ -49,11 +49,12 @@
       border-radius: 10px;
       margin-bottom: 40px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: relative;
 
       /* Fade-in Animation */
       opacity: 0;
       transform: translateY(30px);
-      animation: fadeUp 10s ease forwards;
+      animation: fadeUp 1s ease forwards;
       animation-timeline: view();
       animation-range: entry 0% cover 40%;
     }
@@ -104,9 +105,14 @@
     }
 
     /* --- Carousel Container --- */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+    }
+
     .photo-carousel {
       display: flex;
-      overflow-x: auto;
+      overflow-x: hidden;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
     }
@@ -117,6 +123,53 @@
       scroll-snap-align: start;
       border-top: 1px solid #dbdbdb;
       border-bottom: 1px solid #dbdbdb;
+    }
+
+    /* --- Navigation Buttons --- */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.3);
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .carousel-btn.left {
+      left: 5px;
+    }
+
+    .carousel-btn.right {
+      right: 5px;
+    }
+
+    .carousel-btn:hover {
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    /* --- Dots Indicator --- */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
+      gap: 5px;
+    }
+
+    .carousel-dots span {
+      width: 8px;
+      height: 8px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .carousel-dots .active {
+      background-color: #333;
     }
 
     /* --- Caption --- */
@@ -150,10 +203,19 @@
           <span class="location">Boston Logan Airport</span>
         </div>
       </div>
-      <div class="photo-carousel">
-        <img src="images/boston/IMG_0486.JPG">
-        <img src="images/boston/IMG_0487.JPG">
-        <img src="images/boston/IMG_0488.JPG">
+      <div class="carousel-container">
+        <button class="carousel-btn left">&#10094;</button>
+        <div class="photo-carousel">
+          <img src="images/boston/IMG_0486.JPG">
+          <img src="images/boston/IMG_0487.JPG">
+          <img src="images/boston/IMG_0488.JPG">
+        </div>
+        <button class="carousel-btn right">&#10095;</button>
+        <div class="carousel-dots">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
       <div class="caption">
         📅 July 06, 2025 <br><br>
@@ -170,9 +232,17 @@
           <span class="location">Newbury Street</span>
         </div>
       </div>
-      <div class="photo-carousel">
-        <img src="images/boston/IMG_0518.JPG">
-        <img src="images/boston/IMG_0519.JPG">
+      <div class="carousel-container">
+        <button class="carousel-btn left">&#10094;</button>
+        <div class="photo-carousel">
+          <img src="images/boston/IMG_0518.JPG">
+          <img src="images/boston/IMG_0519.JPG">
+        </div>
+        <button class="carousel-btn right">&#10095;</button>
+        <div class="carousel-dots">
+          <span class="active"></span>
+          <span></span>
+        </div>
       </div>
       <div class="caption">
         📅 July 07, 2025 <br><br>
@@ -189,9 +259,17 @@
           <span class="location">Fenway Park</span>
         </div>
       </div>
-      <div class="photo-carousel">
-        <img src="images/boston/IMG_7712.JPG">
-        <img src="images/boston/IMG_7713.JPG">
+      <div class="carousel-container">
+        <button class="carousel-btn left">&#10094;</button>
+        <div class="photo-carousel">
+          <img src="images/boston/IMG_7712.JPG">
+          <img src="images/boston/IMG_7713.JPG">
+        </div>
+        <button class="carousel-btn right">&#10095;</button>
+        <div class="carousel-dots">
+          <span class="active"></span>
+          <span></span>
+        </div>
       </div>
       <div class="caption">
         📅 July 07, 2025 <br><br>
@@ -208,9 +286,17 @@
           <span class="location">Coolidge Corner</span>
         </div>
       </div>
-      <div class="photo-carousel">
-        <img src="images/boston/IMG_7756.jpg">
-        <img src="images/boston/IMG_7757.jpg">
+      <div class="carousel-container">
+        <button class="carousel-btn left">&#10094;</button>
+        <div class="photo-carousel">
+          <img src="images/boston/IMG_7756.jpg">
+          <img src="images/boston/IMG_7757.jpg">
+        </div>
+        <button class="carousel-btn right">&#10095;</button>
+        <div class="carousel-dots">
+          <span class="active"></span>
+          <span></span>
+        </div>
       </div>
       <div class="caption">
         📅 July 08, 2025 <br><br>
@@ -219,6 +305,36 @@
     </div>
 
   </div>
+
+  <script>
+    document.querySelectorAll('.photo-card').forEach(card => {
+      const carousel = card.querySelector('.photo-carousel');
+      const images = carousel.querySelectorAll('img');
+      const dots = card.querySelectorAll('.carousel-dots span');
+      const btnLeft = card.querySelector('.carousel-btn.left');
+      const btnRight = card.querySelector('.carousel-btn.right');
+      let currentIndex = 0;
+
+      function updateCarousel(index) {
+        carousel.scrollTo({
+          left: carousel.clientWidth * index,
+          behavior: 'smooth'
+        });
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+      }
+
+      btnLeft.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateCarousel(currentIndex);
+      });
+
+      btnRight.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateCarousel(currentIndex);
+      });
+    });
+  </script>
 
 </body>
 </html>
