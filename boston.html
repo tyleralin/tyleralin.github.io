@@ -34,7 +34,7 @@
       color: #e1306c;
     }
 
-    /* --- Scrapbook Layout --- */
+    /* --- Instagram Card Layout --- */
     .scrapbook {
       display: flex;
       flex-direction: column;
@@ -42,7 +42,6 @@
       margin-top: 30px;
     }
 
-    /* --- Photo Card --- */
     .photo-card {
       width: 400px;
       background-color: #fff;
@@ -51,7 +50,7 @@
       margin-bottom: 40px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 
-      /* Fade-in animation */
+      /* --- Fade-in Animation --- */
       opacity: 0;
       transform: translateY(30px);
       animation: fadeUp 10s ease forwards;
@@ -70,7 +69,7 @@
       }
     }
 
-    /* --- Header --- */
+    /* --- Header (profile + username + location) --- */
     .photo-header {
       display: flex;
       align-items: center;
@@ -104,56 +103,12 @@
       margin-top: 4px;
     }
 
-    /* --- Carousel --- */
-    .carousel {
-      position: relative;
-      width: 100%;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      display: flex;
-      scroll-behavior: smooth;
-      border-top: 1px solid #dbdbdb;
-      border-bottom: 1px solid #dbdbdb;
-    }
-
-    .carousel::-webkit-scrollbar {
-      display: none; /* hide scrollbar */
-    }
-
-    .carousel .slide {
-      flex: 0 0 100%;
-      scroll-snap-align: center;
-      position: relative;
-    }
-
-    .carousel .slide img {
+    /* --- Post Image --- */
+    .photo-card > img {
       width: 100%;
       display: block;
-      object-fit: cover;
-      height: 400px; /* consistent height */
-    }
-
-    /* Optional arrows */
-    .carousel .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      color: white;
-      background: rgba(0,0,0,0.3);
-      padding: 0 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      user-select: none;
-      z-index: 10;
-    }
-
-    .carousel .prev {
-      left: 10px;
-    }
-
-    .carousel .next {
-      right: 10px;
+      border-top: 1px solid #dbdbdb;
+      border-bottom: 1px solid #dbdbdb;
     }
 
     /* --- Caption --- */
@@ -177,8 +132,7 @@
 
   <!-- Scrapbook / Instagram Posts -->
   <div class="scrapbook" id="boston">
-
-    <!-- Single Image Post -->
+    <!-- Post 1 -->
     <div class="photo-card">
       <div class="photo-header">
         <img class="profile-pic" src="images/profile/IMG_1494.jpg">
@@ -194,7 +148,7 @@
       </div>
     </div>
 
-    <!-- Carousel Post -->
+    <!-- Post 2 -->
     <div class="photo-card">
       <div class="photo-header">
         <img class="profile-pic" src="images/profile/IMG_1494.jpg">
@@ -203,21 +157,14 @@
           <span class="location">Newbury Street</span>
         </div>
       </div>
-
-      <div class="carousel">
-        <div class="slide"><img src="images/boston/IMG_0518.JPG"></div>
-        <div class="slide"><img src="images/boston/IMG_0486.JPG"></div>
-        <div class="slide"><img src="images/boston/IMG_7712.JPG"></div>
-        <!-- Add more slides easily by adding more div.slide -->
-      </div>
-
+      <img src="images/boston/IMG_0518.JPG">
       <div class="caption">
         📅 July 07, 2025 <br><br>
         Got some cute photobooth pictures
       </div>
     </div>
 
-    <!-- Another Single Image Post -->
+    <!-- Post 3 -->
     <div class="photo-card">
       <div class="photo-header">
         <img class="profile-pic" src="images/profile/457319117_18457601050053444_3250779565135948668_n.jpg">
@@ -233,6 +180,23 @@
       </div>
     </div>
 
+    <!-- Post 4 -->
+    <div class="photo-card">
+      <div class="photo-header">
+        <img class="profile-pic" src="images/profile/457319117_18457601050053444_3250779565135948668_n.jpg">
+        <div class="profile-info">
+          <span class="username">nnsinee</span>
+          <span class="location">Coolidge Corner</span>
+        </div>
+      </div>
+      <img src="images/boston/IMG_7756.jpg">
+      <div class="caption">
+        📅 July 08, 2025 <br><br>
+        Waiting for Khun Babe to finish work ><
+      </div>
+    </div>
+
+    
   </div>
 
 </body>
