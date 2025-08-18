@@ -132,7 +132,6 @@
       transform: translateY(-50%);
       width: 40px;
       height: 40px;
-      line-height: 40px;
       background-color: rgba(0,0,0,0.3);
       border: none;
       color: #fff;
@@ -143,7 +142,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0;
     }
 
     .carousel-btn.left {
@@ -163,15 +161,16 @@
       display: flex;
       justify-content: center;
       padding: 8px 0;
-      gap: 5px;
+      gap: 6px;
     }
 
     .carousel-dots span {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       background-color: #ccc;
       border-radius: 50%;
       display: inline-block;
+      transition: background-color 0.3s;
     }
 
     .carousel-dots .active {
@@ -218,11 +217,7 @@
           <img src="images/boston/IMG_0498.JPG">
         </div>
         <button class="carousel-btn right">&#10095;</button>
-        <div class="carousel-dots">
-          <span class="active"></span>
-          <span></span>
-          <span></span>
-        </div>
+        <div class="carousel-dots"></div>
       </div>
       <div class="caption">
         📅 Day 1: July 06, 2025 <br><br>
@@ -246,10 +241,7 @@
           <img src="images/boston/IMG_0519.JPG">
         </div>
         <button class="carousel-btn right">&#10095;</button>
-        <div class="carousel-dots">
-          <span class="active"></span>
-          <span></span>
-        </div>
+        <div class="carousel-dots"></div>
       </div>
       <div class="caption">
         📅 July 07, 2025 <br><br>
@@ -273,10 +265,7 @@
           <img src="images/boston/IMG_7713.JPG">
         </div>
         <button class="carousel-btn right">&#10095;</button>
-        <div class="carousel-dots">
-          <span class="active"></span>
-          <span></span>
-        </div>
+        <div class="carousel-dots"></div>
       </div>
       <div class="caption">
         📅 July 07, 2025 <br><br>
@@ -300,10 +289,7 @@
           <img src="images/boston/IMG_7757.jpg">
         </div>
         <button class="carousel-btn right">&#10095;</button>
-        <div class="carousel-dots">
-          <span class="active"></span>
-          <span></span>
-        </div>
+        <div class="carousel-dots"></div>
       </div>
       <div class="caption">
         📅 July 08, 2025 <br><br>
@@ -317,10 +303,23 @@
     document.querySelectorAll('.photo-card').forEach(card => {
       const carousel = card.querySelector('.photo-carousel');
       const images = carousel.querySelectorAll('img');
-      const dots = card.querySelectorAll('.carousel-dots span');
+      const dotsContainer = card.querySelector('.carousel-dots');
       const btnLeft = card.querySelector('.carousel-btn.left');
       const btnRight = card.querySelector('.carousel-btn.right');
       let currentIndex = 0;
+
+      // Create dots dynamically
+      dotsContainer.innerHTML = '';
+      images.forEach((_, i) => {
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateCarousel(currentIndex);
+        });
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('span');
 
       function updateCarousel(index) {
         carousel.scrollTo({
