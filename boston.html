@@ -34,7 +34,7 @@
       color: #e1306c;
     }
 
-    /* --- Instagram Card Layout --- */
+    /* --- Scrapbook Layout --- */
     .scrapbook {
       display: flex;
       flex-direction: column;
@@ -50,7 +50,7 @@
       margin-bottom: 40px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 
-      /* --- Fade-in Animation --- */
+      /* Fade-in Animation */
       opacity: 0;
       transform: translateY(30px);
       animation: fadeUp 10s ease forwards;
@@ -103,10 +103,18 @@
       margin-top: 4px;
     }
 
-    /* --- Post Image --- */
-    .photo-card > img {
+    /* --- Carousel Container --- */
+    .photo-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .photo-carousel img {
       width: 100%;
-      display: block;
+      flex-shrink: 0;
+      scroll-snap-align: start;
       border-top: 1px solid #dbdbdb;
       border-bottom: 1px solid #dbdbdb;
     }
@@ -132,6 +140,7 @@
 
   <!-- Scrapbook / Instagram Posts -->
   <div class="scrapbook" id="boston">
+
     <!-- Post 1 -->
     <div class="photo-card">
       <div class="photo-header">
@@ -141,7 +150,11 @@
           <span class="location">Boston Logan Airport</span>
         </div>
       </div>
-      <img src="images/boston/IMG_0486.JPG">
+      <div class="photo-carousel">
+        <img src="images/boston/IMG_0486.JPG">
+        <img src="images/boston/IMG_0487.JPG">
+        <img src="images/boston/IMG_0488.JPG">
+      </div>
       <div class="caption">
         📅 July 06, 2025 <br><br>
         Picked up some flowers and fruit to go pick up my baby :')
@@ -157,7 +170,10 @@
           <span class="location">Newbury Street</span>
         </div>
       </div>
-      <img src="images/boston/IMG_0518.JPG">
+      <div class="photo-carousel">
+        <img src="images/boston/IMG_0518.JPG">
+        <img src="images/boston/IMG_0519.JPG">
+      </div>
       <div class="caption">
         📅 July 07, 2025 <br><br>
         Got some cute photobooth pictures
@@ -173,7 +189,10 @@
           <span class="location">Fenway Park</span>
         </div>
       </div>
-      <img src="images/boston/IMG_7712.JPG">
+      <div class="photo-carousel">
+        <img src="images/boston/IMG_7712.JPG">
+        <img src="images/boston/IMG_7713.JPG">
+      </div>
       <div class="caption">
         📅 July 07, 2025 <br><br>
         Digicam selfie at the baseball game!
@@ -189,14 +208,16 @@
           <span class="location">Coolidge Corner</span>
         </div>
       </div>
-      <img src="images/boston/IMG_7756.jpg">
+      <div class="photo-carousel">
+        <img src="images/boston/IMG_7756.jpg">
+        <img src="images/boston/IMG_7757.jpg">
+      </div>
       <div class="caption">
         📅 July 08, 2025 <br><br>
         Waiting for Khun Babe to finish work ><
       </div>
     </div>
 
-    
   </div>
 
 </body>
