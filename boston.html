@@ -34,42 +34,6 @@
       color: #e1306c;
     }
 
-    /* --- Hero Map --- */
-    .hero-map {
-      width: 100%;
-      height: 400px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 2px solid #ccc;
-    }
-
-    svg {
-      width: 90%;
-      height: 100%;
-    }
-
-    .map-line {
-      fill: none;
-      stroke: #e1306c;
-      stroke-width: 2;
-      stroke-linecap: round;
-    }
-
-    .map-dot {
-      fill: #e1306c;
-      stroke: #fff;
-      stroke-width: 2;
-      r: 6;
-    }
-
-    .map-label {
-      font-size: 12px;
-      fill: #333;
-      font-weight: bold;
-    }
-
     /* --- Scrapbook Layout --- */
     .scrapbook {
       display: flex;
@@ -233,28 +197,6 @@
     <a href="#nyc">New York City</a>
     <a href="#bali">Bali</a>
   </nav>
-
-  <!-- Hero Map -->
-  <div class="hero-map">
-    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
-      <!-- Curved path connecting cities -->
-      <polyline class="map-line" points="100,300 250,200 400,250 600,150 750,200" stroke="#e1306c" stroke-width="3" fill="none" />
-
-      <!-- City Dots -->
-      <circle class="map-dot" cx="100" cy="300" r="6"/>
-      <circle class="map-dot" cx="250" cy="200" r="6"/>
-      <circle class="map-dot" cx="400" cy="250" r="6"/>
-      <circle class="map-dot" cx="600" cy="150" r="6"/>
-      <circle class="map-dot" cx="750" cy="200" r="6"/>
-
-      <!-- Labels -->
-      <text class="map-label" x="85" y="320">Bangkok</text>
-      <text class="map-label" x="235" y="185">Boston</text>
-      <text class="map-label" x="385" y="270">Newport</text>
-      <text class="map-label" x="585" y="135">NYC</text>
-      <text class="map-label" x="735" y="220">Bali</text>
-    </svg>
-  </div>
 
   <!-- Scrapbook / Instagram Posts -->
   <div class="scrapbook" id="boston">
