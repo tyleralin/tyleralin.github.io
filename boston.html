@@ -388,5 +388,50 @@
     });
   </script>
 
+  <script>
+    document.querySelectorAll('.photo-card').forEach(card => {
+      const carousel = card.querySelector('.photo-carousel');
+      if (!carousel) return; // 🔑 Skip cards without carousel
+  
+      const images = carousel.querySelectorAll('img');
+      const dotsContainer = card.querySelector('.carousel-dots');
+      const btnLeft = card.querySelector('.carousel-btn.left');
+      const btnRight = card.querySelector('.carousel-btn.right');
+      let currentIndex = 0;
+  
+      // Create dots dynamically
+      dotsContainer.innerHTML = '';
+      images.forEach((_, i) => {
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateCarousel(currentIndex);
+        });
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('span');
+  
+      function updateCarousel(index) {
+        carousel.scrollTo({
+          left: carousel.clientWidth * index,
+          behavior: 'smooth'
+        });
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+      }
+  
+      btnLeft.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateCarousel(currentIndex);
+      });
+  
+      btnRight.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateCarousel(currentIndex);
+      });
+    });
+  </script>
+
 </body>
 </html>
