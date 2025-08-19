@@ -514,5 +514,16 @@
     });
   </script>
 
+  <script>
+    // Smooth scroll if URL contains a hash
+    window.addEventListener('load', () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
+
 </body>
 </html>
