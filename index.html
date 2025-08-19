@@ -15,6 +15,7 @@
     nav {
       background-color: #FFC5D3;
       padding: 15px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       display: flex;
       justify-content: center;
       gap: 30px;
@@ -33,11 +34,14 @@
       color: #e1306c;
     }
 
-    /* --- Hero Image --- */
-    .hero img {
-      width: 100%;
-      height: auto;
-      display: block;
+    /* --- Countdown --- */
+    #countdown {
+      background-color: #FFC5D3;
+      color: #333;
+      text-align: center;
+      padding: 50px 0;
+      font-size: 32px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -45,6 +49,7 @@
 
   <!-- Top Navigation -->
   <nav>
+    <a href="index.html">Home</a>
     <a href="bangkok.html">Bangkok</a>
     <a href="boston.html">Boston</a>
     <a href="newport.html">Newport</a>
@@ -52,10 +57,36 @@
     <a href="bali.html">Bali</a>
   </nav>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <img src="___" alt="Hero Image">
+  <!-- Countdown Timer -->
+  <div id="countdown">
+    Reunion in Bali: <span id="timer">Loading...</span>
   </div>
+
+  <script>
+    // Countdown script
+    const reunionDate = new Date("October 15, 2025 00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = reunionDate - now;
+
+      if (distance < 0) {
+        document.getElementById("timer").innerHTML = "We're reunited! ❤️";
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 
 </body>
 </html>
