@@ -201,6 +201,31 @@
       font-size: 14px;
       color: #262626;
     }
+
+    /* --- Button --- */
+    .page-button-container {
+      text-align: center;
+      margin: 2rem 0; /* spacing from content */
+    }
+    
+    .page-button {
+      display: inline-block;       /* makes <a> behave like a button */
+      background-color: #3897f0;   /* blue color */
+      color: white;                
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 9999px;       /* pill shape */
+      text-decoration: none;       /* removes underline */
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .page-button:hover {
+      background-color: #2f80d3;
+    }
+    
   </style>
 </head>
 <body>
@@ -341,6 +366,11 @@
         📅 Day 4 & 5: July 09 - 10, 2025 <br><br>
         First time playing tennis together, toured BC campus, and ate hotpot 🎾🏫🌶️🍲
       </div>
+    </div>
+
+    <!-- Navigation Button -->
+    <div class="page-button-container">
+      <a href="nyc.html" class="page-button">Jump to NYC</a>
     </div>
 
   </div>
