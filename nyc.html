@@ -1,3 +1,4 @@
+Edit this code to include the video 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,11 +118,10 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    .photo-carousel img,
-    .photo-carousel video {
+    .photo-carousel img {
       width: 100%;
       height: 600px; /* adjust as needed */
-      object-fit: cover;
+      object-fit: cover; /* keeps aspect ratio, crops overflow */
       flex-shrink: 0;
       scroll-snap-align: start;
       border-top: 1px solid #dbdbdb;
@@ -215,24 +215,20 @@
       <div class="carousel-container">
         <button class="carousel-btn left">&#10094;</button>
         <div class="photo-carousel">
-          <video controls>
-            <source src="images/nyc/IMG_0635.MOV" type="video/quicktime">
-            Your browser does not support the video tag.
-          </video>
           <img src="images/nyc/IMG_0656.JPG">
           <img src="images/nyc/IMG_0659.JPG">
           <img src="images/nyc/IMG_0689.JPG">
           <img src="images/nyc/IMG_0690.JPG">
           <img src="images/nyc/IMG_0692.JPG">
           <img src="images/nyc/IMG_0700.JPG">
-          <img src="images/nyc/IMG_0765.JPEG">
+          <img src="images/nyc/IMG_0765.JPEG>
         </div>
         <button class="carousel-btn right">&#10095;</button>
         <div class="carousel-dots"></div>
       </div>
       <div class="caption">
         📅 Day 6: July 11, 2025 <br><br>
-        First day in NYC was so packed but 
+        First day in NYC was so packed but we ate so much and got to relax afterwards 😌
       </div>
     </div>
 
@@ -322,7 +318,7 @@
   <script>
     document.querySelectorAll('.photo-card').forEach(card => {
       const carousel = card.querySelector('.photo-carousel');
-      const items = carousel.querySelectorAll('img, video');
+      const images = carousel.querySelectorAll('img');
       const dotsContainer = card.querySelector('.carousel-dots');
       const btnLeft = card.querySelector('.carousel-btn.left');
       const btnRight = card.querySelector('.carousel-btn.right');
@@ -330,7 +326,7 @@
 
       // Create dots dynamically
       dotsContainer.innerHTML = '';
-      items.forEach((_, i) => {
+      images.forEach((_, i) => {
         const dot = document.createElement('span');
         if (i === 0) dot.classList.add('active');
         dot.addEventListener('click', () => {
@@ -351,12 +347,12 @@
       }
 
       btnLeft.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
         updateCarousel(currentIndex);
       });
 
       btnRight.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % items.length;
+        currentIndex = (currentIndex + 1) % images.length;
         updateCarousel(currentIndex);
       });
     });
