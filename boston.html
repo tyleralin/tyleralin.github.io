@@ -515,6 +515,22 @@
   </script>
 
   <script>
+    // Allow for #Anchor to work
+    window.addEventListener('load', () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const el = document.querySelector(hash);
+        if (el) {
+          // Use setTimeout to wait a tiny bit for layout/animations
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100); // 100ms delay usually works
+        }
+      }
+    });
+  </script>
+
+  <script>
     // Smooth scroll if URL contains a hash
     window.addEventListener('load', () => {
       const hash = window.location.hash;
