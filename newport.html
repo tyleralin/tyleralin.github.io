@@ -1,1 +1,407 @@
-WIP
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Adventures ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+    }
+
+    /* --- Top Navigation --- */
+    nav {
+      background-color: #FFC5D3;
+      padding: 15px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #e1306c;
+    }
+
+    /* --- Scrapbook Layout --- */
+    .scrapbook {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .photo-card {
+      width: 400px;
+      background-color: #fff;
+      border: 1px solid black;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: relative;
+
+      /* Fade-in Animation */
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Header (profile + username + location) --- */
+    .photo-header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+      border: 1px solid #dbdbdb;
+      flex-shrink: 0;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .username {
+      font-weight: bold;
+      font-size: 14px;
+      color: #262626;
+    }
+
+    .location {
+      font-size: 12px;
+      color: #8e8e8e;
+      margin-top: 4px;
+    }
+
+    /* --- Carousel Container --- */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .photo-carousel {
+      display: flex;
+      overflow-x: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .photo-carousel img {
+      width: 100%;
+      height: 600px; /* adjust as needed */
+      object-fit: cover; /* keeps aspect ratio, crops overflow */
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      border-top: 1px solid #dbdbdb;
+      border-bottom: 1px solid #dbdbdb;
+    }
+
+    /* --- Photo Container --- */
+    .photo-container {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .photo-container img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* --- Navigation Buttons --- */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0,0,0,0.3);
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn.left {
+      left: 5px;
+    }
+
+    .carousel-btn.right {
+      right: 5px;
+    }
+
+    .carousel-btn:hover {
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    /* --- Dots Indicator --- */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0;
+      gap: 6px;
+    }
+
+    .carousel-dots span {
+      width: 7px;
+      height: 7px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-dots .active {
+      background-color: #333;
+    }
+
+    /* --- Caption --- */
+    .caption {
+      padding: 10px;
+      font-size: 14px;
+      color: #262626;
+    }
+
+    /* --- Button --- */
+    .page-button-container {
+      text-align: center;
+      margin: 2rem 0; /* spacing from content */
+    }
+    
+    .page-button {
+      display: inline-block;       /* makes <a> behave like a button */
+      background-color: #3897f0;   /* blue color */
+      color: white;                
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 9999px;       /* pill shape */
+      text-decoration: none;       /* removes underline */
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .page-button:hover {
+      background-color: #2f80d3;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="bangkok.html">Bangkok</a>
+    <a href="boston.html">Boston</a>
+    <a href="newport.html">Newport</a>
+    <a href="nyc.html">New York City</a>
+    <a href="bali.html">Bali</a>
+  </nav>
+
+  <!-- Scrapbook / Instagram Posts -->
+  <div class="scrapbook" id="boston">
+
+    <!-- Post 1 -->
+    <div class="photo-card">
+      <div class="photo-header">
+        <img class="profile-pic" src="images/profile/IMG_1494.jpg">
+        <div class="profile-info">
+          <span class="username">tyl_lin</span>
+          <span class="location">Bryant Park | West Village | 5th Ave | Little Island</span>
+        </div>
+      </div>
+      <div class="carousel-container">
+        <button class="carousel-btn left">&#10094;</button>
+        <div class="photo-carousel">
+          <img src="images/nyc/IMG_0656.JPG">
+          <img src="images/nyc/IMG_8084.jpg">
+          <img src="images/nyc/IMG_0676.jpg">
+          <img src="images/nyc/IMG_0689.JPG">
+          <img src="images/nyc/IMG_0690.JPG">
+          <img src="images/nyc/IMG_0692.JPG">
+          <img src="images/nyc/IMG_0700.JPG">
+        </div>
+        <button class="carousel-btn right">&#10095;</button>
+        <div class="carousel-dots"></div>
+      </div>
+      <div class="caption">
+        📅 Day 6: July 11, 2025 <br><br>
+        First day in NYC was so packed, but we ate so much good food and did so much sightseeing
+      </div>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="photo-card">
+      <div class="photo-header">
+        <img class="profile-pic" src="images/profile/457319117_18457601050053444_3250779565135948668_n.jpg">
+        <div class="profile-info">
+          <span class="username">nnsinee</span>
+          <span class="location">Bergdorf Goodman</span>
+        </div>
+      </div>
+      <div class="photo-container">
+        <img src="images/nyc/IMG_8650.JPG">
+      </div>
+      <div class="caption">
+        📅 Day 6: July 11, 2025 <br><br>
+        My bf takes such good pics of me on my digicam!! 🥰☺️
+      </div>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="photo-card">
+      <div class="photo-header">
+        <img class="profile-pic" src="images/profile/IMG_0686.jpg">
+        <div class="profile-info">
+          <span class="username">pekkle_penguin</span>
+          <span class="location">In A New Bed</span>
+        </div>
+      </div>
+      <div class="photo-container">
+        <img src="images/profile/IMG_0686.jpg">
+      </div>
+      <div class="caption">
+        📅 Day 6: July 11, 2025 <br><br>
+        Made it to New York!!!
+      </div>
+    </div>
+
+    <!-- Navigation Button -->
+    <div class="page-button-container">
+      <a href="boston.html" class="page-button">Jump to Boston</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.photo-card').forEach(card => {
+      const carousel = card.querySelector('.photo-carousel');
+      const images = carousel.querySelectorAll('img');
+      const dotsContainer = card.querySelector('.carousel-dots');
+      const btnLeft = card.querySelector('.carousel-btn.left');
+      const btnRight = card.querySelector('.carousel-btn.right');
+      let currentIndex = 0;
+
+      // Create dots dynamically
+      dotsContainer.innerHTML = '';
+      images.forEach((_, i) => {
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateCarousel(currentIndex);
+        });
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('span');
+
+      function updateCarousel(index) {
+        carousel.scrollTo({
+          left: carousel.clientWidth * index,
+          behavior: 'smooth'
+        });
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+      }
+
+      btnLeft.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateCarousel(currentIndex);
+      });
+
+      btnRight.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateCarousel(currentIndex);
+      });
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll('.photo-card').forEach(card => {
+      const carousel = card.querySelector('.photo-carousel');
+      if (!carousel) return; // 🔑 Skip cards without carousel
+  
+      const images = carousel.querySelectorAll('img');
+      const dotsContainer = card.querySelector('.carousel-dots');
+      const btnLeft = card.querySelector('.carousel-btn.left');
+      const btnRight = card.querySelector('.carousel-btn.right');
+      let currentIndex = 0;
+  
+      // Create dots dynamically
+      dotsContainer.innerHTML = '';
+      images.forEach((_, i) => {
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateCarousel(currentIndex);
+        });
+        dotsContainer.appendChild(dot);
+      });
+      const dots = dotsContainer.querySelectorAll('span');
+  
+      function updateCarousel(index) {
+        carousel.scrollTo({
+          left: carousel.clientWidth * index,
+          behavior: 'smooth'
+        });
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+      }
+  
+      btnLeft.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateCarousel(currentIndex);
+      });
+  
+      btnRight.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateCarousel(currentIndex);
+      });
+    });
+  </script>
+
+</body>
+</html>
